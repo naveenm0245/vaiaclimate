@@ -15,6 +15,20 @@
       "when": 1721738573389,
       "tag": "0001_slimy_human_torch",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1721977566585,
+      "tag": "0002_slippery_sue_storm",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1721979194868,
+      "tag": "0003_goofy_jasper_sitwell",
+      "breakpoints": true
     }
   ]
 }

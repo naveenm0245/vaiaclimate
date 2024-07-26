@@ -39,7 +39,7 @@ export const CategoryBarHero = () => (
     <div className="space-y-3">
       <div className="flex flex-col justify-center space-y-8">
         <Card className="max-w-sm">
-          <p className="text-center font-mono text-sm text-slate-700 pb-4">
+          <p className="text-center font-mono text-sm text-slate-700 dark:text-slate-100 pb-4">
             Carbon Emission Avoided
           </p>
           <CategoryBar

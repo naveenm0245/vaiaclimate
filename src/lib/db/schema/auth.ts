@@ -5,6 +5,7 @@ import {
   primaryKey,
   integer,
   boolean,
+  serial,
 } from "drizzle-orm/pg-core";
 import type { AdapterAccount } from "@auth/core/adapters";
 
@@ -82,4 +83,16 @@ export const authenticators = pgTable(
     }),
   })
 );
+
+export const records = pgTable("record", {
+  id: serial("id").notNull().primaryKey(),
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  url : text("url").notNull(),
+  fileName : text("fileName").notNull(),
+  remarks : text("remarks"),
+  createdAt : timestamp("createdAt", { mode: "date" }).notNull().defaultNow(),
+  updatedAt : timestamp("updatedAt", { mode: "date" }).notNull().defaultNow(),
+});
 
