@@ -1,5 +1,5 @@
 import { SidebarLink } from "@/components/SidebarItems";
-import { ChartNoAxesCombined, Cog, Globe, History, HomeIcon, User } from "lucide-react";
+import { BookText, ChartNoAxesCombined, Cog, Globe, History, HomeIcon, User } from "lucide-react";
 
 type AdditionalLinks = {
   title: string;
@@ -12,6 +12,11 @@ export const defaultLinks: SidebarLink[] = [
     href: "/calculate",
     title: "Calculate Emission",
     icon: ChartNoAxesCombined,
+  },
+  {
+    href: "/document",
+    title: "Document Parser",
+    icon: BookText,
   },
   {
     href: "/records",

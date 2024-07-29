@@ -3,6 +3,8 @@ import { api } from '@/lib/trpc/api'
 import Link from 'next/link';
 import React from 'react'
 
+export const dynamic = "force-dynamic";
+
 const PastRecords = async () => {
     const data = await api.protected.getReocrdsOfUserTrpc.query();
 

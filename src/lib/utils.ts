@@ -1,6 +1,7 @@
 import { customAlphabet } from "nanoid";
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+// import pdfParse from "pdf-parse";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -21,3 +22,8 @@ export const generateSlug = (text: string) => {
     .replace(/^-+/, "") // Trim starting hyphen
     .replace(/-+$/, ""); // Trim ending hyphen
 };
+
+// export const parsePDF = async (pdfBuffer: Buffer): Promise<string> => {
+//   const data = await pdfParse(pdfBuffer);
+//   return data.text;
+// };

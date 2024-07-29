@@ -63,7 +63,7 @@ const SubmitFile = () => {
         formData.append("file", file);
 
         try {
-          const response = await fetch("/api/upload", {
+          const response = await fetch("/api/uploadaws", {
             method: "POST",
             body: formData,
           });

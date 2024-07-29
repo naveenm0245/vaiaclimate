@@ -10,7 +10,7 @@ export const runtime = "edge";
 
 const app = new Hono<Env>().basePath("/api");
 
-app.post("/upload", async (c) => {
+app.post("/uploadaws", async (c) => {
   const body = await c.req.parseBody();
   // console.log(body);
   const file = body["file"] as File;
