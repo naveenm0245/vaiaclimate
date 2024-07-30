@@ -35,7 +35,7 @@ const ChatComponent = () => {
   };
 
   return (
-    <div className="flex flex-col flex-1 space-y-4 min-w-[800px] bg-green- p-[2rem]">
+    <div className="flex flex-col flex-1 space-y-4 min-w-[calc(100vw-2rem)] lg:min-w-[800px] bg-green- p-1 lg:p-[2rem] mx-auto bg-blue">
       <Label htmlFor="message">Ask Question : </Label>
       <Textarea
         typeof="text"
@@ -54,7 +54,7 @@ const ChatComponent = () => {
             </h1>
           </div>
         )}
-        {answer && <h1>{answer}</h1>}
+        {answer && <h1 className="whitespace-pre-line ">{answer}</h1>}
       </div>
     </div>
   );

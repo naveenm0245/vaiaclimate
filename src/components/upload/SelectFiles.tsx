@@ -31,14 +31,14 @@ const SelectFiles:React.FC<SelectedFilesProps> = ({data}) => {
       console.log("fileName : ", fileName);
 
   return (
-    <div className='space-y-4'>
+    <div className='space-y-4 bg-red-'>
       <div className="flex flex-col space-y-4 p-2">
         {data.map((record, index) => (
           <div key={index} className="p-2">
             <Link
               href={record.url}
               target="_blank"
-              className="text-emerald-600 hover:text-emerald-600/90 cursor-pointer text-sm border-[2px] border-neutral-300 rounded-lg p-2"
+              className="text-emerald-600 hover:text-emerald-600/90 cursor-pointer text-sm border-[2px] border-neutral-300 rounded-lg p-2 line-clamp-1 max-w-fit"
             >
               {record.fileName}
             </Link>

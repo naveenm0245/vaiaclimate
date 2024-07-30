@@ -8,14 +8,14 @@ export const dynamic = "force-dynamic";
 
 const DocumentPage = async () => {
   return (
-    <div className="flex flex-col min-h-screen w-full py-12 ">
-      <h1 className="text-3xl font-semibold text-center">Document Parser For Vaia Climate</h1>
-      <div className="flex space-x-4 p-[2rem] bg-red-">
-        <div className="w-[4/10] border-r-[2px] border-primary-foreground px-[2rem] flex flex-col space-y-4">
+    <div className="flex flex-col min-h-screen w-full py-2 lg:py-12 ">
+      <h1 className="text-xl lg:text-3xl font-semibold text-center">Document Parser For Vaia Climate</h1>
+      <div className="flex flex-col lg:flex-row lg:space-x-4 p-2 lg:p-[2rem] bg-red- ">
+        <div className="w-full lg:w-[4/10] border-r-[2px] border-primary-foreground px-1 lg:px-[2rem] flex flex-col space-y-4">
           <UploadComponent />
           <AllUserFiles/>
         </div>
-        <div className="w-[6/10] bg-blue min-w-lg">
+        <div className="lg:w-[6/10] bg-blue">
           <ChatComponent />
         </div>
       </div>

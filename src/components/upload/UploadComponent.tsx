@@ -6,10 +6,12 @@ import { Button } from "../ui/button";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc/client";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 
 const UploadComponent = () => {
   //upload file
   const [ref, setRef] = React.useState<HTMLInputElement | null>(null);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const router = useRouter();
 
@@ -23,6 +25,8 @@ const UploadComponent = () => {
     },
   });
   const uploadFile = async () => {
+    if (!ref) return;
+    setIsSubmitting(true);
     console.log(ref?.files);
     const file = ref?.files![0];
     if (!file) return;
@@ -58,13 +62,16 @@ const UploadComponent = () => {
       console.log("File Indexed successfully");
       toast.success("File Indexed successfully");
       router.refresh();
+
+      setIsSubmitting(false);
     } else {
       console.error("File Index failed");
       toast.error("File Index failed");
+      setIsSubmitting(false);
     }
   };
   return (
-    <div className="flex flex-col w-full space-y-4 min-w-[400px]">
+    <div className="flex flex-col w-full space-y-4 lg:min-w-[400px]">
       <Input
         type="file"
         placeholder="Upload File"
@@ -74,12 +81,17 @@ const UploadComponent = () => {
         ref={setRef}
       />
       <Button className="max-w-fit" onClick={uploadFile}>
-        Upload
+        {isSubmitting ? (
+          <div className="flex space-x-2 items-center">
+            <Loader2 className="w-6 h-6 animate-spin transition-all" />
+            <h1>Uploading...</h1>
+          </div>
+        ) : (
+          "Upload"
+        )}
       </Button>
 
-      <div>
-        {/* <h1>All Uploaded Documents : </h1> */}
-      </div>
+      <div>{/* <h1>All Uploaded Documents : </h1> */}</div>
     </div>
   );
 };

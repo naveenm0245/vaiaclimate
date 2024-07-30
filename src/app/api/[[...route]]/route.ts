@@ -65,9 +65,29 @@ app.post("/uploadaws", async (c) => {
 
   // console.log('input : ', input);
   const command = new PutObjectCommand(input);
-  const response = await client.send(command);
-  // console.log(response);
+  
+
   const url = `https://${S3_BUCKET}.s3.${S3_REGION}.amazonaws.com/${fileName}`;
+
+  try {
+    const response = await client.send(command);
+    if (response) {
+      // console.log(response);
+      return c.json(
+        {
+          message: "File uploaded successfully",
+          url: url,
+          fileName: file.name,
+          status: "success",
+        },
+        200
+      );
+    }
+  } catch (error) {
+    console.error(error);
+  }
+  // console.log(response);
+  
   // console.log(url);
 
   return c.json({

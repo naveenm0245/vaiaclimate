@@ -17,7 +17,7 @@ export default async function AppLayout({
         <TrpcProvider cookies={cookies().toString()}>
           <div className="flex h-screen">
             <Sidebar />
-            <main className="flex-1 md:p-8 pt-2 p-8 overflow-y-auto">
+            <main className="flex-1 md:p-8 pt-2 p-2 overflow-y-auto">
               <Navbar />
               {children}
             </main>

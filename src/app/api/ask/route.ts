@@ -78,8 +78,15 @@ export async function POST(request: Request) {
   const res = await model.invoke([prompt]);
   console.log(res.content);
 
-  return new Response(
-    JSON.stringify({ message: "ok", data: { content: res.content } }),
-    { status: 200 }
-  );
+  try {
+    const res = await model.invoke([prompt]);
+    console.log(res.content);
+    return new Response(
+      JSON.stringify({ message: "ok", data: { content: res.content } }),
+      { status: 200 }
+    );
+  }catch(err) {
+    console.log(err);
+    return new Response(JSON.stringify({ message: "Error", data: { content: res.content } }), { status: 500 });
+  }
 }
