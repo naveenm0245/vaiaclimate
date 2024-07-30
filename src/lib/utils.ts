@@ -1,6 +1,7 @@
 import { customAlphabet } from "nanoid";
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { Blob } from "buffer";
 // import pdfParse from "pdf-parse";
 
 export function cn(...inputs: ClassValue[]) {
@@ -27,3 +28,7 @@ export const generateSlug = (text: string) => {
 //   const data = await pdfParse(pdfBuffer);
 //   return data.text;
 // };
+
+export const bufferToBlob = (buffer: Buffer, mimeType: string): Blob => {
+  return new Blob([buffer], { type: mimeType });
+};

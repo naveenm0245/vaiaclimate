@@ -63,12 +63,18 @@ const UploadPreSigned = () => {
           toast.success('File uploaded successfully. Indexing the File...');
         //   router.refresh();
 
-          const formData = new FormData();
-          formData.append("file", file);
+        //   const formData = new FormData();
+        //   formData.append("file", file);
 
-           const response2 = await fetch("/api/upload", {
+           const response2 = await fetch("/api/uploadv2", {
              method: "POST",
-             body: formData,
+             headers: {
+               "Content-Type": "application/json",
+             },
+             body: JSON.stringify({
+               fileName: data.publicUrl.split("/").slice(-1)[0],
+               fileType: file.type,
+             }),
            });
 
            if (response2.ok) {
