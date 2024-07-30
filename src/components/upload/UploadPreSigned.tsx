@@ -73,6 +73,7 @@ const UploadPreSigned = () => {
              },
              body: JSON.stringify({
                fileName: data.publicUrl.split("/").slice(-1)[0],
+               name : file.name,
                fileType: file.type,
              }),
            });

@@ -9,7 +9,13 @@ import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { Readable } from "stream";
 import { bufferToBlob } from "@/lib/utils";
 
-const s3 = new S3Client({ region: process.env.S3_REGION as string });
+const s3 = new S3Client({
+  region: process.env.S3_REGION as string,
+  credentials: {
+    accessKeyId: process.env.S3_ACCESS_KEY_ID as string,
+    secretAccessKey: process.env.S3_ACCESS_KEY_SECRET as string,
+  },
+});
 
 
 const streamToBuffer = (stream: Readable): Promise<Buffer> => {
@@ -30,7 +36,7 @@ export async function POST(request: Request) {
 
 
  const body = await request.json();
- const { fileName } = body;
+ const { fileName, name } = body;
  console.log(fileName);
 
   const params = {
@@ -69,7 +75,7 @@ export async function POST(request: Request) {
 
       await PineconeStore.fromDocuments(splitDocs, embeddings, {
         pineconeIndex: pcIndex,
-        namespace: fileName,
+        namespace: name,
       });
 
       return new Response(JSON.stringify({ message: "ok" }), { status: 200 });
