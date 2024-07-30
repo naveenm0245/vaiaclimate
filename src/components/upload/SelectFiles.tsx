@@ -32,9 +32,9 @@ const SelectFiles:React.FC<SelectedFilesProps> = ({data}) => {
 
   return (
     <div className='space-y-4 bg-red-'>
-      <div className="flex flex-col space-y-4 p-2">
+      <div className="flex flex-col space-y-4 py-2">
         {data.map((record, index) => (
-          <div key={index} className="p-2">
+          <div key={index} className="py-2">
             <Link
               href={record.url}
               target="_blank"
